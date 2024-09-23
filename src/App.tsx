@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./App.css";
-import { Tree } from "./components";
+import { Tree, Button } from "./components";
 
 const defaultTextAreaValue = `[
   {
@@ -105,7 +104,11 @@ function App() {
   const [isArray, setIsArray] = useState(false);
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "50px",
+      }}
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -134,9 +137,13 @@ function App() {
           rows={14}
           style={{
             width: "100%",
+            border: "1px solid #4CAF50",
+            borderRadius: "12px",
+            padding: "8px",
           }}
         />
-        <button>Submit</button>
+        <Button title="Submit" />
+
         {isArray
           ? data.map((k, i) => (
               <Tree title={`Object-${i}`}>{recursiveTree(k)}</Tree>
